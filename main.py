@@ -1,8 +1,7 @@
 from download_card_image_from_wikimedia import download_card_image
+
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout
-from PyQt5.QtGui import QPixmap
-from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout, QDesktopWidget
 
 
 class MyApp(QWidget):
@@ -12,25 +11,37 @@ class MyApp(QWidget):
         self.initUI()
 
     def initUI(self):
-        pixmap = QPixmap('731px-AC.svg.png')
+        btn1 = QPushButton('&Button1', self)
+        btn1.setCheckable(True)
+        btn1.toggle()
 
-        lbl_img = QLabel()
-        lbl_img.setPixmap(pixmap)
-        lbl_size = QLabel('Width: '+str(pixmap.width())+', Height: '+str(pixmap.height()))
-        lbl_size.setAlignment(Qt.AlignCenter)
+        btn2 = QPushButton(self)
+        btn2.setText('Button&2')
+
+        btn3 = QPushButton('Button3', self)
+        btn3.setEnabled(False)
 
         vbox = QVBoxLayout()
-        vbox.addWidget(lbl_img)
-        vbox.addWidget(lbl_size)
-        self.setLayout(vbox)
+        vbox.addWidget(btn1)
+        vbox.addWidget(btn2)
+        vbox.addWidget(btn3)
 
-        self.setWindowTitle('QPixmap')
-        self.move(300, 300)
+        self.setLayout(vbox)
+        self.setWindowTitle('QPushButton')
+        self.resize(1600, 800)
+        # self.showMaximized()
+        self.center()
+        # self.setGeometry(1000, 1000, 1000, 1000)
         self.show()
+
+    def center(self):
+        qr = self.frameGeometry()
+        cp = QDesktopWidget().availableGeometry().center()
+        qr.moveCenter(cp)
+        self.move(qr.topLeft())
 
 
 if __name__ == '__main__':
-    download_card_image()
     app = QApplication(sys.argv)
     ex = MyApp()
     sys.exit(app.exec_())
