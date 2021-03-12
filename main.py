@@ -1,3 +1,4 @@
+from download_card_image_from_wikimedia import download_card_image
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout
 from PyQt5.QtGui import QPixmap
@@ -29,6 +30,7 @@ class MyApp(QWidget):
 
 
 if __name__ == '__main__':
+    download_card_image()
     app = QApplication(sys.argv)
     ex = MyApp()
     sys.exit(app.exec_())
