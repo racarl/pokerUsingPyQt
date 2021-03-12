@@ -28,7 +28,7 @@ class MyApp(QWidget):
 
         self.setLayout(vbox)
         self.setWindowTitle('QPushButton')
-        self.resize(1600, 800)
+        self.resize(2400, 800)
         # self.showMaximized()
         self.center()
         # self.setGeometry(1000, 1000, 1000, 1000)
