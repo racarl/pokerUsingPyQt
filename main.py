@@ -1,6 +1,8 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton
-from PyQt5.QtCore import QCoreApplication
+from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtCore import Qt
+
 
 class MyApp(QWidget):
 
@@ -9,13 +11,20 @@ class MyApp(QWidget):
         self.initUI()
 
     def initUI(self):
-        btn = QPushButton('Quit', self)
-        btn.move(50, 50)
-        btn.resize(btn.sizeHint())
-        btn.clicked.connect(QCoreApplication.instance().quit)
+        pixmap = QPixmap('731px-AC.svg.png')
 
-        self.setWindowTitle('Quit Button')
-        self.setGeometry(300, 300, 300, 200)
+        lbl_img = QLabel()
+        lbl_img.setPixmap(pixmap)
+        lbl_size = QLabel('Width: '+str(pixmap.width())+', Height: '+str(pixmap.height()))
+        lbl_size.setAlignment(Qt.AlignCenter)
+
+        vbox = QVBoxLayout()
+        vbox.addWidget(lbl_img)
+        vbox.addWidget(lbl_size)
+        self.setLayout(vbox)
+
+        self.setWindowTitle('QPixmap')
+        self.move(300, 300)
         self.show()
 
 
