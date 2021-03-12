@@ -1,5 +1,7 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton
+from PyQt5.QtCore import QCoreApplication
+from PyQt5.QtGui import QIcon
 
 class MyApp(QWidget):
 
@@ -8,9 +10,9 @@ class MyApp(QWidget):
         self.initUI()
 
     def initUI(self):
-        self.setWindowTitle('My first app')
-        self.move(300, 300)
-        self.resize(400, 400)
+        self.setWindowTitle('Icon')
+        self.setWindowIcon(QIcon('731px-AC.svg.png'))
+        self.setGeometry(300, 300, 300, 200)
         self.show()
 
 
